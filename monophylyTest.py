@@ -56,7 +56,7 @@ def get_non_mono_taxa(mono):
     return [k for k, v in mono.items() if v == 0.0]
 
 def proportion_monophyletic(res):
-    """get proportion of trees that are monophyletic"""
+    """get proportion of monophyletic trees"""
     with open("results_taxa_monophyly.txt", "w") as out:
         header = "species\tproportion monophyletic\tN gene trees"
         out.write(header + "\n")
@@ -107,6 +107,7 @@ def main():
         for k, v in r.items():
             results[k].append(v)
 
+    # write results to file
     proportion_monophyletic(results)
     monophyly_of_loci(non_monophyly)
 
